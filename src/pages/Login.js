@@ -11,6 +11,11 @@ export default function Login() {
     e.preventDefault()
   }
 
+  //   const login = async() => {
+  //       const res = await axios("http://localhost:3005/users/login", {method: "POST",headers:{
+  //           "Content-Type": "application/json"}, data: {email, password}
+  //       }})
+  //   }
   const showLoginForm = () => {
     return (
       <div className="d-flex flex-column">

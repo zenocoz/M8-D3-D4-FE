@@ -82,10 +82,12 @@ export default function Signup() {
           </small>
         )} */}
         <hr />
-
         <button onClick={handleSubmit} className="sign-in-btn">
           Sign up
         </button>
+        <a href={process.env.REACT_APP_GOOGLE_SIGNIN_URI}>
+          <button className="mt-2 sign-in-btn">Sign in with Google</button>
+        </a>
 
         <div className="text-center">
           <p className="mt-2">
