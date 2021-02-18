@@ -1,22 +1,46 @@
 import React, { useEffect, useState } from "react"
 import { Navbar, Nav } from "react-bootstrap"
 import { Link } from "react-router-dom"
+import Cookies from "js-cookie"
 
 export default function Home() {
-  const [isLoggedIn, setLoggedIn] = useState(false)
+  // const user = Cookies.get("userLogged")
 
-  useEffect(() => {}, [setLoggedIn])
+  const [userLogged, setLoggedIn] = useState(false)
+
+  useEffect(() => {
+    console.log(Cookies.get("userLogged"))
+    const user = Cookies.get("userLogged")
+    if (user) {
+      setLoggedIn(true)
+    }
+  }, [])
+
+  const logOut = () => {
+    Cookies.remove("userLogged", { path: "" })
+    setLoggedIn(false)
+  }
 
   return (
     <div>
       <Navbar bg="dark" variant="dark">
         <Navbar.Brand href="#home">Navbar</Navbar.Brand>
         <Nav className="mr-auto">
-          <Link className="mr-2" to="/auth/signup">
-            Sign In
-          </Link>
+          {userLogged ? (
+            <Link className="mr-2" to="/" onClick={() => logOut()}>
+              Log Out
+            </Link>
+          ) : (
+            <div>
+              <Link className="mr-2" to="/auth/signup">
+                Sign In
+              </Link>
 
-          <Link to="/auth/login">Log In</Link>
+              <Link className="mr-2" to="/auth/login">
+                Log In
+              </Link>
+            </div>
+          )}
         </Nav>
       </Navbar>
       <h1>WELCOME TO THIS AWESOME WEBSITE FULL OF FEATURES</h1>

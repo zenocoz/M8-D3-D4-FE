@@ -1,11 +1,17 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import "./auth.css"
 import { Link } from "react-router-dom"
+import Cookies from "js-cookie"
 
 export default function Signup() {
   const handleSubmit = () => {}
 
   const [profile, setProfile] = useState({})
+
+  //   useEffect(() => {
+  //     Cookies.remove("userLogged", { path: "" })
+  //   }, [])
+
   const handleChange = (e) => {
     setProfile({ ...profile, [e.target.name]: e.target.value })
   }
